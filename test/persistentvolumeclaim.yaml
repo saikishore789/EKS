@@ -1,0 +1,12 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  namespace: storage
+  name: test-claim
+spec:
+  storageClassName: efs
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Mi

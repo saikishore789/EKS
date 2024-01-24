@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-client-provisioner
+  namespace: storage
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nfs-client-provisioner
+  template:
+    metadata:
+      labels:
+        app: nfs-client-provisioner
+    spec:
+      serviceAccountName: nfs-client-provisioner
+      containers:
+      - name: nfs-client-provisioner
+        image: quay.io/external_storage/nfs-client-provisioner:latest
+        volumeMounts:
+        - name: nfs-client-root
+          mountPath: /persistentvolumes
+        env:
+        - name: FILE_SYSTEM_ID
+          valueFrom:
+            configMapKeyRef:
+              name: nfs-provisioner
+              key: file.system.id
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: nfs-provisioner
+              key: aws.region
+        - name: DNS_NAME
+          valueFrom:
+              configMapKeyRef:
+                name: nfs-provisioner
+                key: dns.name
+                optional: true
+        - name: PROVISIONER_NAME
+          valueFrom:
+              configMapKeyRef:
+                name: nfs-provisioner
+                key: provisioner.name
+        - name: NFS_SERVER
+          value: 192.168.9.102
+        - name: NFS_PATH
+          value: /
+      volumes:
+      - name: nfs-client-root
+        nfs:
+          server: 192.168.9.102
+          path: /

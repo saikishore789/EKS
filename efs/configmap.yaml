@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nfs-provisioner
+  namespace: storage
+data:
+  file.system.id: fs-05f61c64000429c79
+  aws.region: ap-south-1
+  provisioner.name: example.com/aws-efs
+  dns.name: "fs-05f61c64000429c79.efs.ap-south-1.amazonaws.com"
