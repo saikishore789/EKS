@@ -1,0 +1,10 @@
+replicas: 1
+version: 'latest'
+
+# Service Specific Values
+nodejs:
+  image: brentley/ecsdemo-nodejs
+crystal:
+  image: brentley/ecsdemo-crystal
+frontend:
+  image: brentley/ecsdemo-frontend
