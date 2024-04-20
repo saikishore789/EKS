@@ -26,7 +26,7 @@ spec:
         name: ecsdemo-nodejs
         livenessProbe:
           httpGet:
-            path: /
+            path: /tmp/healthy
             port: 3000
         readinessProbe:
           exec:
