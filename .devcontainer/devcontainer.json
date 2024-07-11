@@ -2,8 +2,8 @@
 	"image": "mcr.microsoft.com/devcontainers/universal:2",
 	"features": {
 		"ghcr.io/devcontainers/features/aws-cli:1": {},
-		"ghcr.io/devcontainers-contrib/features/terraform-asdf:2": {},
 		"ghcr.io/paul-gilber/devcontainer-features/eksctl-homebrew:1": {},
-		"ghcr.io/casl0/devcontainer-features/eksctl:1": {}
+		"ghcr.io/casl0/devcontainer-features/eksctl:1": {},
+		"ghcr.io/devcontainers/features/terraform:1": {}
 	}
 }
